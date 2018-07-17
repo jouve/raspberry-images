@@ -1,0 +1,33 @@
+diff --git a/docker/etc/s6/gitea/run b/docker/etc/s6/gitea/run
+index 1fddb9370..7a4613797 100755
+--- a/docker/etc/s6/gitea/run
++++ b/docker/etc/s6/gitea/run
+@@ -2,5 +2,5 @@
+ [[ -f ./setup ]] && source ./setup
+ 
+ pushd /app/gitea > /dev/null
+-    exec su-exec git /app/gitea/gitea web
++    exec s6-setuidgit git export HOME /home/git /app/gitea/gitea web
+ popd
+diff --git a/docker/etc/s6/openssh/run b/docker/etc/s6/openssh/run
+index 502e7f6dd..077177d15 100755
+--- a/docker/etc/s6/openssh/run
++++ b/docker/etc/s6/openssh/run
+@@ -2,5 +2,5 @@
+ [[ -f ./setup ]] && source ./setup
+ 
+ pushd /root > /dev/null
+-    exec su-exec root /usr/sbin/sshd -D
++    exec /usr/sbin/sshd -D
+ popd
+diff --git a/docker/etc/s6/syslogd/run b/docker/etc/s6/syslogd/run
+index 2c8d2cf1f..116611492 100755
+--- a/docker/etc/s6/syslogd/run
++++ b/docker/etc/s6/syslogd/run
+@@ -2,5 +2,5 @@
+ [[ -f ./setup ]] && source ./setup
+ 
+ pushd /root > /dev/null
+-    exec su-exec root /sbin/syslogd -nS -O-
++    exec /sbin/syslogd -nS -O-
+ popd

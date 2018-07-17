@@ -1,0 +1,12 @@
+diff --git a/magefile.go b/magefile.go
+index 73d383f..aaa7953 100644
+--- a/magefile.go
++++ b/magefile.go
+@@ -97,6 +97,7 @@ func (p *Platform) ReleaseBase() string {
+ var platforms []Platform = []Platform{
+ 	{"linux", "amd64", ""},
+ 	{"linux", "386", ""},
++	{"linux", "arm", ""},
+ 	{"darwin", "amd64", ""},
+ 	{"darwin", "386", ""},
+ 	{"windows", "amd64", ".exe"},
